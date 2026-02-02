@@ -1,0 +1,246 @@
+/* Toolbar Styles */
+
+.toolbar {
+    position: fixed;
+    top: var(--spacing-md);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+}
+
+/* RTL Support */
+[dir="rtl"] .toolbar {
+    flex-direction: row-reverse;
+}
+
+.toolGroup {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background: var(--color-border);
+}
+
+/* Tool Buttons */
+.toolButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.toolButton:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+}
+
+.toolButton.active {
+    background: var(--color-primary);
+    color: white;
+}
+
+.toolButton.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.toolButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Color Button */
+.colorWrapper {
+    position: relative;
+}
+
+.colorButton {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.colorButton:hover {
+    border-color: var(--color-text-secondary);
+}
+
+/* Color Picker Dropdown */
+.colorPicker {
+    position: absolute;
+    top: calc(100% + var(--spacing-sm));
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.colorSwatch {
+    width: 28px;
+    height: 28px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.colorSwatch:hover {
+    transform: scale(1.1);
+}
+
+.colorSwatch.selectedColor {
+    border-color: var(--color-text);
+}
+
+.colorSwatch svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Width Button */
+.widthWrapper {
+    position: relative;
+}
+
+.widthButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.widthButton:hover {
+    background: var(--color-bg-secondary);
+}
+
+.widthPreview {
+    background: var(--color-text);
+    border-radius: var(--radius-full);
+    min-width: 4px;
+    min-height: 4px;
+    max-width: 24px;
+    max-height: 24px;
+}
+
+/* Width Picker Dropdown */
+.widthPicker {
+    position: absolute;
+    top: calc(100% + var(--spacing-sm));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    min-width: 150px;
+}
+
+.widthSlider {
+    width: 100%;
+    height: 6px;
+    appearance: none;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    outline: none;
+}
+
+.widthSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.widthSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.widthSlider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+}
+
+.widthLabel {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Auto Correct Icon */
+.autoCorrectIcon {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .toolbar {
+        top: auto;
+        bottom: var(--spacing-md);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        gap: var(--spacing-xs);
+        max-width: calc(100vw - var(--spacing-md) * 2);
+        overflow-x: auto;
+    }
+
+    .toolButton {
+        width: 36px;
+        height: 36px;
+    }
+
+    .colorButton {
+        width: 28px;
+        height: 28px;
+    }
+}
